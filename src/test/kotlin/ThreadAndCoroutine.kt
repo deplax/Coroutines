@@ -19,9 +19,7 @@ class ThreadAndCoroutine {
     fun timeTest() {
         val amount = 10
 
-        val coroutineTime = runBlocking {
-            measureTimeMillis { runCoroutine(amount) }
-        }
+        val coroutineTime = runBlocking { measureTimeMillis { runCoroutine(amount) } }
         val threadTime = measureTimeMillis { runThread(amount) }
 
         logger.info("coroutine $coroutineTime ms")
