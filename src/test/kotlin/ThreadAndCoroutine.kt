@@ -1,4 +1,5 @@
 import kotlinx.coroutines.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import java.math.BigDecimal
@@ -65,5 +66,11 @@ class ThreadAndCoroutine {
             sum += BigDecimal(denominator / numerator)
         }
         return sum * BigDecimal(4)
+    }
+
+    @Test
+    fun `이거 왜 리턴 없어??`() {
+        val result = Executors.newSingleThreadExecutor().submit {10}.get()
+        assertThat(result).isNull()
     }
 }
